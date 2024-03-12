@@ -16,17 +16,17 @@ Below is a tutorial on how to add the library to your project and how to use it.
 ### Choose SDK versions
 You have to decide which version of SDK you want to use. Two available:
 
-**ThunderSDK** - contains SDK functionality + extra user targeting provided by [NumberEight](https://numbereight.ai/); this version will ask user for extra permissions (i.e. location)
+**ThunderSDK** - contains SDK functionality + extra user profiling; this version will ask user for extra permissions (i.e. location)
 
-> [NumberEight](https://numbereight.ai/) is an AI software, which predicts the live context of a user (e.g. running, commuting) from sensors present in the device, and then packages them neatly into ID-less behavioural audiences (e.g. joggers, frequent shoppers).
+> Profiling mechanism used is an AI functionality, which predicts the live context of a user (e.g. running, commuting) from sensors present in the device, and then packages them neatly into ID-less behavioural audiences (e.g. joggers, frequent shoppers).
  
-**ThunderLiteSDK** - contains SDK functionality without extra user targeting; this version won't ask user for extra permissions
+**ThunderLiteSDK** - contains SDK functionality without extra user profiling; this version won't ask user for extra permissions
 
 The method of installation depends on how the library was given. If an aar file was provided then adding to the project is by manual means.
 Regardless of how you obtained the library, you must add the following code to the application manifest between the application tags:
 
 ```xml
-<activity android:name="com.siroccomobile.adtonos.thundersdk.ui.ThunderActivity"
+<activity android:name="com.adtonos.thundersdk.ui.ThunderActivity"
 android:theme="@style/AppTheme.Transparent" />
 ```
 
@@ -56,10 +56,10 @@ In the application gradle file, find the "dependencies" section and add the foll
 
 ```groovy
 // Required for lite version
-implementation('com.siroccomobile.adtonos:thunder-lite-sdk:1.0@aar')
+implementation('com.adtonos:thunder-lite-sdk:1.0@aar')
 
 // Required for full version with additional targeting
-implementation('com.siroccomobile.adtonos:thunder-sdk:1.0@aar')
+implementation('com.adtonos:thunder-sdk:1.0@aar')
 implementation('ai.numbereight.sdk:nesdk:3.4.0@aar') { transitive = true }
 implementation('ai.numbereight.sdk:audiences:3.4.0')
 
@@ -145,13 +145,13 @@ The first necessary step in the project is to call the ATThunderSDK.Initialize m
 ATThunderSDK.initialize(context = applicationContext)
 ```
 
-### Number eight key
+### Profiling key
 
 **This chapter is required for full version with additional targeting.**
-Before calling start method please invoke setNumberEightKey method with your obtained key to ensure proper work of sdk.
+Before calling start method please invoke setProfilingKey method with your obtained key to ensure proper work of sdk.
 
 ```kotlin
-ATSandstormSDK.setNumberEightKey("KEY")
+ATSandstormSDK.setProfilingKey("KEY")
 ```
 
 ### Start
@@ -331,5 +331,5 @@ override fun onDestroy() {
 
 Please see extended documentation from repository to get information about possible errors and other methods that can be invoked.
 
-# Package com.siroccomobile.adtonos.thundersdk.api
+# Package com.adtonos.thundersdk.api
 
